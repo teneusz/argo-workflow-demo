@@ -3,8 +3,8 @@ kind: WorkflowTemplate
 metadata:
   name: demo-workflow
   annotations:
-    workflows.argoproj.io/description: |
-      This is a simple hello world example.
+    workflows.argoproj.io/title: 'Build and test' # defaults to `metadata.name` if not specified
+    workflows.argoproj.io/description: 'SuperDuperProject PR #6529: Implement frobbing (aff39ee)'
 spec:
   entrypoint: hello-world
   templates:
