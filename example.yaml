@@ -1,6 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
+  name: demo-workflow
   annotations:
     workflows.argoproj.io/description: |
       This is a simple hello world example.
