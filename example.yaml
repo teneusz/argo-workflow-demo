@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  annotations:
+    workflows.argoproj.io/description: |
+      This is a simple hello world example.
+spec:
+  entrypoint: hello-world
+  templates:
+  - name: hello-world
+    container:
+      image: busybox
+      command: [echo]
+      args: ["hello world"]
