@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1alpha1
+haapiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
   name: webhook-sensor
@@ -8,7 +8,7 @@ spec:
   dependencies:
     - name: test-dep
       eventSourceName: webhook-sensor
-      eventName: example
+      eventName: webhook-sensor
   triggers:
     - template:
         name: webhook-workflow-trigger
