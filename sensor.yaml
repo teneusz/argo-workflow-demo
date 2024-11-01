@@ -7,7 +7,7 @@ spec:
     serviceAccountName: operate-workflow-sa
   dependencies:
     - name: example
-      eventSourceName: example
+      eventSourceName: webhook-sensor
       eventName: example
   triggers:
     - template:
