@@ -11,33 +11,23 @@ spec:
       eventName: example
   triggers:
     - template:
-        name: webhook-workflow-trigger
+        name: argo-workflow-trigger
         argoWorkflow:
-          operation: create
+          group: argoproj.io
+          version: v1alpha1
+          resource: workflows
+          operation: submit
           source:
             resource:
               apiVersion: argoproj.io/v1alpha1
               kind: Workflow
               metadata:
-                generateName: webhook-
+                generateName: webhook-triggered-workflow-
               spec:
-                entrypoint: whalesay
-                arguments:
-                  parameters:
-                  - name: message
-                    # the value will get overridden by event payload from test-dep
-                    value: hello world
+                entrypoint: main
                 templates:
-                - name: whalesay
-                  inputs:
-                    parameters:
-                    - name: message
-                  container:
-                    image: docker/whalesay:latest
-                    command: [cowsay]
-                    args: ["{{inputs.parameters.message}}"]
-          parameters:
-            - src:
-                dependencyName: test-dep
-                dataKey: body
-              dest: spec.arguments.parameters.0.value
+                  - name: main
+                    container:
+                      image: alpine:latest
+                      command: ["/bin/sh", "-c"]
+                      args: ["echo 'Triggered by webhook!'"]
