@@ -22,9 +22,8 @@ spec:
               apiVersion: argoproj.io/v1alpha1
               kind: Workflow
               metadata:
-                generateName: webhook-triggered-workflow-
+                generateName: "-"
                 annotations:
-                  "workflows.argoproj.io/title": "{{inputs.parameters.title}}" # poprawione klucze w mapie
                   "workflows.argoproj.io/description": "{{inputs.parameters.description}}" # poprawione klucze w mapie
               spec:
                 entrypoint: main
@@ -42,4 +41,5 @@ spec:
             - src:
                 dependencyName: example
                 dataKey: body.title
-              dest: metadata.annotations.workflows\\.argoproj\\.io/title # Rozpoznanie pola title
+              dest: metadata.generateName
+              operation: prepend
