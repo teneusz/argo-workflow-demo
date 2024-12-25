@@ -25,11 +25,14 @@ spec:
                 generateName: webhook-triggered-workflow-
                 annotations:
                   workflows.argoproj.io/title: "demo"
-                  workflows.argoproj.io/description: ""
+                  workflows.argoproj.io/description: "{{workflow.parameters.description}}"
               spec:
                 entrypoint: main
                 templates:
                   - name: main
+                    parameters:
+                      - name: description
+                        value: ""
                     container:
                       image: alpine:latest
                       command: ["/bin/sh", "-c"]
@@ -38,4 +41,4 @@ spec:
             - src:
                 dependencyName: webhook-dep
                 dataKey: body.description
-              dest: metadata.annotations.workflows\\.argoproj\\.io/description
+              dest: spec.templates[0].parameters[0].value
