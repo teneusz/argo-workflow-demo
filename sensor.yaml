@@ -15,7 +15,11 @@ spec:
         argoWorkflow:
           group: argoproj.io
           version: v1alpha1
-          resource: workflows
+          kind: Workflow
+          metadata:
+            generateName: webhook-triggered-workflow-
+            annotations:
+              workflows.argoproj.io/description: "{{ event.body.description }}"
           operation: submit
           source:
             resource:
