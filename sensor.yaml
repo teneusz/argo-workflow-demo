@@ -51,11 +51,10 @@ spec:
               operation: append
             - src:
                 dependencyName: example
-                dataKey: body.title
+                dataKey: body.url
               dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
               operation: append
             - src:
                 dependencyName: example
                 dataKey: body.title
-              dest: metadata.generateName
-              operation: prepend
+              dest: metadata.annotations.workflows\.argoproj\.io\/title
