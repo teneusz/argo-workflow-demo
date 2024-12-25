@@ -37,7 +37,8 @@ spec:
                     inputs:
                       parameters:
                         - name: description
-                          value: ""
+                          # Poprawienie miejsca, w którym parametr zostanie nadpisany
+                          value: "{{inputs.parameters.description}}"
                     container:
                       image: alpine:latest
                       command: ["/bin/sh", "-c"]
@@ -48,6 +49,6 @@ spec:
                 dataKey: body.description
               dest: spec.arguments.parameters.0.value
             - src:
-                dependencyName: example_other
+                dependencyName: example
                 dataKey: body.description
               dest: metadata.annotations.workflows\\.argoproj\\.io/description
