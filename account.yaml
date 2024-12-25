@@ -3,3 +3,7 @@ kind: ServiceAccount
 metadata:
   name: operate-workflow-sa
   namespace: argo
+rules:
+  - apiGroups: ["argoproj.io"]
+    resources: ["workflows"]
+    verbs: ["create", "get", "list", "watch", "update", "delete"]
