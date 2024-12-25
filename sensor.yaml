@@ -28,6 +28,9 @@ spec:
                   workflows.argoproj.io/description: "{{inputs.parameters.description}}"
               spec:
                 entrypoint: main
+                arguments:
+                  parameters:
+                    - name: description
                 templates:
                   - name: main
                     inputs:
@@ -39,10 +42,6 @@ spec:
                       args: ["echo 'Description: {{workflow.annotations.workflows.argoproj.io/description}}'"]
           parameters:
             - src:
-                dependencyName: webhook-dep
+                dependencyName: example
                 dataKey: body.description
               dest: spec.arguments.parameters[0].value
-        arguments:
-          parameters:
-            - name: description
-              value: ""
