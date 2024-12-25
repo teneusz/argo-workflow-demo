@@ -24,6 +24,7 @@ spec:
               metadata:
                 generateName: webhook-triggered-workflow-
                 annotations:
+                  workflows.argoproj.io/title: "demo"
                   workflows.argoproj.io/description: ""
               spec:
                 entrypoint: main
