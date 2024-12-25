@@ -35,8 +35,16 @@ spec:
                       args: ["echo World"]
           parameters:
             - src:
+                value: "**"
+              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
+              operation: append
+            - src:
                 dependencyName: example
                 dataKey: body.description
+              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
+              operation: append
+            - src:
+                value: "** "
               dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
               operation: append
             - src:
