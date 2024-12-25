@@ -42,4 +42,5 @@ spec:
             - src:
                 dependencyName: example
                 dataKey: body.title
-              dest: metadata.name
+              dest: metadata.generateName
+              operation: prepend
