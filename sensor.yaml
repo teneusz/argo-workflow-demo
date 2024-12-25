@@ -61,5 +61,9 @@ spec:
 ##              operation: append
             - src:
                 dependencyName: example
-                dataTemplate: "**{{ .Input.body.service }}** [{{.Input.body.mrName}}]({{.Input.body.mrUrl}})"
+                dataTemplate: "`{{ .Input.body.service }}` [{{.Input.body.mrName}}]({{.Input.body.mrUrl}})"
+              dest: metadata.annotations.workflows\.argoproj\.io\/description
+            - src:
+                dependencyName: example
+                dataTemplate: "Merge request"
               dest: metadata.annotations.workflows\.argoproj\.io\/title
