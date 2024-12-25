@@ -24,8 +24,8 @@ spec:
               metadata:
                 generateName: webhook-triggered-workflow-
                 annotations:
-                  workflows.argoproj.io/title: "demo"
-                  workflows.argoproj.io/description: "{{inputs.parameters.description}}"
+                  "workflows.argoproj.io/title": "{{inputs.parameters.title}}" # poprawione klucze w mapie
+                  "workflows.argoproj.io/description": "{{inputs.parameters.description}}" # poprawione klucze w mapie
               spec:
                 entrypoint: main
                 templates:
@@ -38,8 +38,8 @@ spec:
             - src:
                 dependencyName: example
                 dataKey: body.description
-              dest: metadata.annotations.workflows\\.argoproj\\.io/description
+              dest: metadata.annotations.workflows\\.argoproj\\.io/description # Rozpoznanie pola description
             - src:
                 dependencyName: example
                 dataKey: body.title
-              dest: metadata.annotations.workflows\\.argoproj\\.io/title
+              dest: metadata.annotations.workflows\\.argoproj\\.io/title # Rozpoznanie pola title
