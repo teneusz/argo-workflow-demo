@@ -28,21 +28,22 @@ spec:
                   workflows.argoproj.io/description: "{{inputs.parameters.description}}"
               spec:
                 entrypoint: main
-                arguments:  # Przypisanie argumentów na poziomie spec
+                arguments:
                   parameters:
                     - name: description
-                      value: ""
+                      value: "{{inputs.parameters.description}}"
                 templates:
                   - name: main
                     inputs:
                       parameters:
                         - name: description
+                          value: ""
                     container:
                       image: alpine:latest
                       command: ["/bin/sh", "-c"]
-                      args: ["echo 'Description: {{inputs.parameters.description}}'"]
+                      args: ["echo 'Description: {{workflow.annotations.workflows.argoproj.io/description}}'"]
           parameters:
             - src:
                 dependencyName: example
                 dataKey: body.description
-              dest: spec.arguments.parameters[0].value
+              dest: spec.arguments.parameters.0.value
