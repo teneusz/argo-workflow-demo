@@ -28,27 +28,18 @@ spec:
                   workflows.argoproj.io/description: "{{inputs.parameters.description}}"
               spec:
                 entrypoint: main
-                arguments:
-                  parameters:
-                    - name: description
-                      value: "{{inputs.parameters.description}}"
                 templates:
                   - name: main
-                    inputs:
-                      parameters:
-                        - name: description
-                          # Poprawienie miejsca, w którym parametr zostanie nadpisany
-                          value: "{{inputs.parameters.description}}"
                     container:
                       image: alpine:latest
                       command: ["/bin/sh", "-c"]
-                      args: ["echo Description: {{inputs.parameters.description}}"]
+                      args: ["echo World"]
           parameters:
             - src:
-                dependencyName: example
-                dataKey: body.description
-              dest: spec.arguments.parameters.0.value
-            - src:
-                dependencyName: example
+                dependencyName: description
                 dataKey: body.description
               dest: metadata.annotations.workflows\\.argoproj\\.io/description
+            - src:
+                dependencyName: title
+                dataKey: body.title
+              dest: metadata.annotations.workflows\\.argoproj\\.io/title
