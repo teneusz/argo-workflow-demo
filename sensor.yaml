@@ -34,27 +34,32 @@ spec:
                       command: ["/bin/sh", "-c"]
                       args: ["echo World"]
           parameters:
+#            - src:
+#                dependencyName: example
+#                value: "`"
+#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
+#              operation: append
+#            - src:
+#                dependencyName: example
+#                dataKey: body.description
+#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
+#              operation: append
+#            - src:
+#                dependencyName: example
+#                value: "` "
+#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
+#              operation: append
+#            - src:
+#                dependencyName: example
+#                dataKey: body.url
+#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
+#              operation: append
+#            - src:
+#                dependencyName: example
+#                dataTemplate: "{{body.url}}"
+#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
+##              operation: append
             - src:
                 dependencyName: example
-                value: "`"
-              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-              operation: append
-            - src:
-                dependencyName: example
-                dataKey: body.description
-              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-              operation: append
-            - src:
-                dependencyName: example
-                value: "` "
-              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-              operation: append
-            - src:
-                dependencyName: example
-                dataKey: body.url
-              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-              operation: append
-            - src:
-                dependencyName: example
-                dataKey: body.title
+                dataTemplate: "**{{ .Input.body.service }}** [{{.Input.body.mrName}}]({{.Input.body.mrUrl}})"
               dest: metadata.annotations.workflows\.argoproj\.io\/title
