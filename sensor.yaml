@@ -16,11 +16,6 @@ spec:
           group: argoproj.io
           version: v1alpha1
           kind: Workflow
-          metadata:
-            generateName: webhook-triggered-workflow-
-            annotations:
-              workflows.argoproj.io/title: "Title "
-              workflows.argoproj.io/description: "{{ event.body.description }}"
           operation: submit
           source:
             resource:
@@ -28,6 +23,9 @@ spec:
               kind: Workflow
               metadata:
                 generateName: webhook-triggered-workflow-
+                annotations:
+                  workflows.argoproj.io/title: "Title "
+                  workflows.argoproj.io/description: "{{ event.body.description }}"
               spec:
                 entrypoint: main
                 templates:
