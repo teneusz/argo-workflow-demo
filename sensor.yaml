@@ -15,7 +15,7 @@ spec:
         argoWorkflow:
           group: argoproj.io
           version: v1alpha1
-          kind: Workflow
+          resource: workflows
           operation: submit
           source:
             resource:
@@ -24,8 +24,7 @@ spec:
               metadata:
                 generateName: webhook-triggered-workflow-
                 annotations:
-                  workflows.argoproj.io/title: "Title "
-                  workflows.argoproj.io/description: "{{ event.body.description }}"
+                  workflows.argoproj.io/description: ""
               spec:
                 entrypoint: main
                 templates:
@@ -34,3 +33,8 @@ spec:
                       image: alpine:latest
                       command: ["/bin/sh", "-c"]
                       args: ["echo 'Triggered by webhook!'"]
+          parameters:
+            - src:
+                dependencyName: webhook-dep
+                dataKey: body.description
+              dest: metadata.annotations.workflows\\.argoproj\\.io/description
