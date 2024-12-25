@@ -41,7 +41,7 @@ spec:
                     container:
                       image: alpine:latest
                       command: ["/bin/sh", "-c"]
-                      args: ["echo 'Description: {{workflow.annotations.workflows.argoproj.io/description}}'"]
+                      args: ["echo 'Description: {{inputs.parameters.description}}'"]
           parameters:
             - src:
                 dependencyName: example
