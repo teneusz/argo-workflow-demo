@@ -24,7 +24,7 @@ spec:
               metadata:
                 generateName: "-"
                 annotations:
-                  "workflows.argoproj.io/description": "{{inputs.parameters.description}}" # poprawione klucze w mapie
+                  "workflows.argoproj.io/description": "" # poprawione klucze w mapie
               spec:
                 entrypoint: main
                 templates:
@@ -38,7 +38,12 @@ spec:
                 dependencyName: example
                 dataKey: body.description
               dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-              operation: overwrite
+              operation: append
+            - src:
+                dependencyName: example
+                dataKey: body.title
+              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
+              operation: append
             - src:
                 dependencyName: example
                 dataKey: body.title
