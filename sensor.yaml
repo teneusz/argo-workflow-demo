@@ -50,4 +50,4 @@ spec:
             - src:
                 dependencyName: example_other
                 dataKey: body.description
-              dest: metadata.annotations[workflows.argoproj.io/description]
+              dest: metadata.annotations.workflows\\.argoproj\\.io/description
