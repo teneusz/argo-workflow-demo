@@ -34,10 +34,10 @@ spec:
                       command: ["/bin/sh", "-c"]
                       args: ["echo World"]
           parameters:
-#            - src:
-#                dependencyName: example
-#                dataKey: body.description
-#              dest: metadata.annotations.workflows\\.argoproj\\.io/description # Rozpoznanie pola description
+            - src:
+                dependencyName: example
+                dataKey: body.description
+              dest: metadata.annotations.workflows.argoproj.io/description # Rozpoznanie pola description
             - src:
                 dependencyName: example
                 dataKey: body.title
