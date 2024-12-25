@@ -36,10 +36,10 @@ spec:
                       args: ["echo World"]
           parameters:
             - src:
-                dependencyName: description
+                dependencyName: example
                 dataKey: body.description
               dest: metadata.annotations.workflows\\.argoproj\\.io/description
             - src:
-                dependencyName: title
+                dependencyName: example
                 dataKey: body.title
               dest: metadata.annotations.workflows\\.argoproj\\.io/title
