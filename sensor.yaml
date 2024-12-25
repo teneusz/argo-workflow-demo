@@ -37,10 +37,9 @@ spec:
             - src:
                 dependencyName: example
                 dataKey: body.description
-              dest: metadata.annotations.workflows # Rozpoznanie pola description
+              dest: metadata.annotations["workflows.argoproj.io/description"] # Rozpoznanie pola description
               operation: overwrite
             - src:
                 dependencyName: example
                 dataKey: body.title
-              dest: metadata.generateName
-              operation: prepend
+              dest: metadata.name
