@@ -31,11 +31,13 @@ spec:
                 arguments:
                   parameters:
                     - name: description
+                      value: "{{inputs.parameters.description}}"
                 templates:
                   - name: main
                     inputs:
                       parameters:
                         - name: description
+                          value: ""
                     container:
                       image: alpine:latest
                       command: ["/bin/sh", "-c"]
