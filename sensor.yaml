@@ -23,8 +23,6 @@ spec:
               kind: Workflow
               metadata:
                 generateName: "demo-sensor-workflow-"
-                annotations:
-                  "workflows.argoproj.io/description": "" # poprawione klucze w mapie
               spec:
                 entrypoint: main
                 templates:
@@ -34,34 +32,9 @@ spec:
                       command: ["/bin/sh", "-c"]
                       args: ["echo World"]
           parameters:
-#            - src:
-#                dependencyName: example
-#                value: "`"
-#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-#              operation: append
-#            - src:
-#                dependencyName: example
-#                dataKey: body.description
-#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-#              operation: append
-#            - src:
-#                dependencyName: example
-#                value: "` "
-#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-#              operation: append
-#            - src:
-#                dependencyName: example
-#                dataKey: body.url
-#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-#              operation: append
-#            - src:
-#                dependencyName: example
-#                dataTemplate: "{{body.url}}"
-#              dest: metadata.annotations.workflows\.argoproj\.io\/description # Rozpoznanie pola description
-##              operation: append
             - src:
                 dependencyName: example
-                dataTemplate: "`{{ .Input.body.service }}` [{{.Input.body.mrName}}]({{.Input.body.mrUrl}})"
+                dataTemplate: "`{{ .Input.body.service }}` [{{ .Input.body.mrName }}]({{ .Input.body.mrUrl }})"
               dest: metadata.annotations.workflows\.argoproj\.io\/description
             - src:
                 dependencyName: example
