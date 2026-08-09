@@ -1,4 +1,4 @@
 argo:
   server:
     authModes:
-      - client
+      - server
