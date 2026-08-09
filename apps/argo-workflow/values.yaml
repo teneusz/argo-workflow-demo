@@ -1,3 +1,4 @@
-server:
-  authModes:
-    - client
+argo:
+  server:
+    authModes:
+      - client

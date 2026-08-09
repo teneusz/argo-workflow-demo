@@ -28,3 +28,4 @@ dependencies:
   - name: "argo-workflows"
     version: "1.0.23"
     repository: "https://argoproj.github.io/argo-helm"
+    alias: argo
