@@ -1,0 +1,15 @@
+harbor:
+  expose:
+    type: ingress
+    tls:
+      enabled: false     # na minikube testowo można wyłączyć TLS dla uproszczenia
+    ingress:
+      hosts:
+        core: harbor.local
+      className: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        nginx.ingress.kubernetes.io/proxy-body-size: "0"
+  externalURL: http://harbor.local
+  persistence:
+    enabled: true
