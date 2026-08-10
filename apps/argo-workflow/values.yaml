@@ -2,3 +2,6 @@ argo:
   server:
     authModes:
       - server
+  workflow:
+    serviceAccount:
+      create: true
