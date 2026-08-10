@@ -8,8 +8,8 @@ metadata:
 spec:
   entrypoint: hello-world
   templates:
-  - name: hello-world
-    container:
-      image: busybox
-      command: [echo]
-      args: ["hello world"]
+    - name: hello-world
+      container:
+        image: busybox
+        command: [echo]
+        args: ["hello world"]
