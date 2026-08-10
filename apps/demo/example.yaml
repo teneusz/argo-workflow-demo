@@ -7,7 +7,7 @@ metadata:
     workflows.argoproj.io/description: 'SuperDuperProject PR #6529: Implement frobbing (aff39ee)'
 spec:
   entrypoint: hello-world
-  serviceAccount: argo-workflow
+  serviceAccountName: argo-workflow
   templates:
     - name: hello-world
       container:
